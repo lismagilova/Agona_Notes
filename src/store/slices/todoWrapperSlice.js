@@ -4,7 +4,7 @@ const initialState = {
     todoWrappers: []
 }
 
-const addWrapperSlice = createSlice({
+const todoWrapperSlice = createSlice({
     name: 'todoWrapper',
     initialState,
     reducers: {
@@ -15,9 +15,13 @@ const addWrapperSlice = createSlice({
                 todos: []
             }
             state.todoWrappers.push(newWrapper)
+        },
+        deleteTodoWrapper: (state, action) => {
+            const id = action.payload
+            state.todoWrappers = state.todoWrappers.filter((wrapper) => wrapper.id !== id)
         }
     }
 })
 
-export const { addTodoWrapper } = addWrapperSlice.actions
-export default addWrapperSlice.reducer
+export const { addTodoWrapper, deleteTodoWrapper } = todoWrapperSlice.actions
+export default todoWrapperSlice.reducer

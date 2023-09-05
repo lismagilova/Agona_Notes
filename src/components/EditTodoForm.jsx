@@ -13,10 +13,11 @@ export const EditTodoForm = ({editTodo, task}) => {
                    value={value}
                    onChange={(e) => setValue(e.target.value)}
                    className='todo-input'
-                   placeholder='Обновить задачу' />
+                   placeholder='Обновить пункт'/>
             <button type='submit' className='todo-btn'>
-                Обновить задачу
+                Обновить пункт
             </button>
         </form>
     )
 }
+

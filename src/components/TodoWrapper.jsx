@@ -3,8 +3,10 @@ import { Todo } from './Todo'
 import { TodoForm } from './TodoForm'
 import { v4 as uuidv4 } from 'uuid'
 import { EditTodoForm } from './EditTodoForm'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-export const TodoWrapper = ({title}) => {
+export const TodoWrapper = ({title, id, onDelete}) => {
     const [todos, setTodos] = useState([])
 
     const addTodo = (todo) => {
@@ -41,9 +43,21 @@ export const TodoWrapper = ({title}) => {
         )
     }
 
+    const deleteTodoWrapper = () => {
+        onDelete(id)
+    }
+
     return (
         <div className='TodoWrapper'>
-            <h1>{title}</h1>
+            <div className='BoardHead'>
+                <div className='NameWrapper'>
+                    <h1 className='Name'>{title}</h1>
+                </div>
+                <button className="DeleteBoardButton" onClick={deleteTodoWrapper}>
+                    <FontAwesomeIcon icon={faTrash} />
+                </button>
+            </div>
+
             <TodoForm addTodo={addTodo} />
             {todos.map((todo) =>
                 todo.isEditing ? (
@@ -61,3 +75,4 @@ export const TodoWrapper = ({title}) => {
         </div>
     )
 }
+

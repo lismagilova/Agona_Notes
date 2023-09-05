@@ -1,12 +1,26 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { Login } from '../components/Login'
 
 export const LoginPage = () => {
     return (
         <div>
-            <h1>Войти</h1>
-            <p>
-                или <Link to='/register'>зарегистрироваться</Link>
-            </p>
+            <div className='background'>
+                <div className='shape'></div>
+                <div className='shape'></div>
+            </div>
+            <div className='FormPage'>
+                <h1 className='FormName'>Вход</h1>
+                <Login/>
+                <p className='FormText'>
+                    Нет аккаунта?
+                    <Link to='/register' className='FormLink'>
+                        Зарегистрироваться
+                    </Link>
+                </p>
+            </div>
         </div>
     )
 }
+
+
